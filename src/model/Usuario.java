@@ -16,7 +16,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return getNome();
+		return getNome()+" - "+getCargo();
 	}
 	
 	public final StringProperty nomeProperty() {

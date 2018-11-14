@@ -16,22 +16,26 @@ public class Chamado {
 	private StringProperty dataCriacao = new SimpleStringProperty("");
 	private IntegerProperty id = new SimpleIntegerProperty(0);
 	private BooleanProperty status = new SimpleBooleanProperty(false);
+	private StringProperty destinatarioNome = new SimpleStringProperty("");
+	private StringProperty remetenteNome = new SimpleStringProperty("");
+	
+	
 	
 	
 	public Usuario getDestinatario() {
 		return destinatario;
 	}
 
-	public void setDestinatario(Usuario destinatario) {
-		this.destinatario = destinatario;
+	public void setDestinatario(Object destinatario) {
+		this.destinatario = (Usuario) destinatario;
 	}
 
 	public Usuario getRemetente() {
 		return remetente;
 	}
 
-	public void setRemetente(Usuario remetente) {
-		this.remetente = remetente;
+	public void setRemetente(Object remetente) {
+		this.remetente = (Usuario) remetente;
 	}
 
 	public final StringProperty descricaoProperty() {
@@ -66,8 +70,8 @@ public class Chamado {
 		return this.dataCriacaoProperty().get();
 	}
 	
-	public final void setDataCriacao(final String dataCriacao) {
-		this.dataCriacaoProperty().set(dataCriacao);
+	public final void setDataCriacao(String date) {
+		this.dataCriacaoProperty().set(date);
 	}
 	
 	public final IntegerProperty idProperty() {
@@ -95,10 +99,5 @@ public class Chamado {
 	public final void setStatus(final boolean status) {
 		this.statusProperty().set(status);
 	}
-	
-	
-	
-	
-	
 	
 }
