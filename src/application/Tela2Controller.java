@@ -4,16 +4,13 @@ import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Properties;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.Chamado;
-import model.Usuario;
 import util.Conexao;
 
 public class Tela2Controller {
@@ -22,7 +19,7 @@ public class Tela2Controller {
 	
 	@FXML TableView<Chamado> tblEfetuados;
 	
-	@FXML TableColumn<Chamado, Usuario> colEfDestinatario;
+	@FXML TableColumn<Chamado, String> colEfDestinatario;
 	@FXML TableColumn<Chamado, String> colEfDescricao;
 	@FXML TableColumn<Chamado, String> colEfUrgencia;
 	@FXML TableColumn<Chamado, String> colEfEfetuado;
@@ -40,10 +37,15 @@ public class Tela2Controller {
 	
 	public void initialize() {
 		lerArquivo();
+		inicializarTabelaEfetuados();
 	}
 	
 	public void inicializarTabelaEfetuados() {
-		colEfDestinatario.setCellValueFactory(cellData -> cellData.getValue().getDestinatario());
+		colEfDestinatario.setCellValueFactory(cellData -> cellData.getValue().getDestinatario().nomeProperty());
+		colEfDescricao.setCellValueFactory(cellData -> cellData.getValue().descricaoProperty());
+		colEfUrgencia.setCellValueFactory(cellData -> cellData.getValue().urgenciaProperty());
+		colEfEfetuado.setCellValueFactory(cellData -> cellData.getValue().dataCriacaoProperty());
+		colEfStatus.setCellValueFactory(cellData -> cellData.getValue().statusStrProperty());
 		
 	}
 	

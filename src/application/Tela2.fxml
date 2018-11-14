@@ -21,6 +21,7 @@
             <GridPane BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -47,13 +48,13 @@
                                                 <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                                                <TableView fx:id="tblEfetuados" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                                                   <columns>
-                                                    <TableColumn prefWidth="75.0" text="Destinatário" />
-                                                    <TableColumn prefWidth="96.0" text="Descrição" />
-                                                      <TableColumn prefWidth="110.0" text="Urgência" />
-                                                      <TableColumn prefWidth="106.0" text="Efetuado em" />
-                                                      <TableColumn prefWidth="108.0" text="Status" />
+                                                    <TableColumn fx:id="colEfDestinatario" prefWidth="75.0" text="Destinatário" />
+                                                    <TableColumn fx:id="colEfDescricao" prefWidth="96.0" text="Descrição" />
+                                                      <TableColumn fx:id="colEfUrgencia" prefWidth="110.0" text="Urgência" />
+                                                      <TableColumn fx:id="colEfEfetuado" prefWidth="106.0" text="Efetuado em" />
+                                                      <TableColumn fx:id="colEfStatus" prefWidth="108.0" text="Status" />
                                                   </columns>
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" top="5.0" />

@@ -9,17 +9,15 @@ import javafx.beans.property.StringProperty;
 
 public class Chamado {
 
-	private Usuario destinatario = new Usuario();
-	private Usuario remetente = new Usuario();
+	private Usuario destinatario;
+	private Usuario remetente;
+	
 	private StringProperty descricao = new SimpleStringProperty("");
 	private StringProperty urgencia = new SimpleStringProperty("");
 	private StringProperty dataCriacao = new SimpleStringProperty("");
 	private IntegerProperty id = new SimpleIntegerProperty(0);
 	private BooleanProperty status = new SimpleBooleanProperty(false);
-	private StringProperty destinatarioNome = new SimpleStringProperty("");
-	private StringProperty remetenteNome = new SimpleStringProperty("");
-	
-	
+	private StringProperty statusStr = new SimpleStringProperty("");
 	
 	
 	public Usuario getDestinatario() {
@@ -99,5 +97,28 @@ public class Chamado {
 	public final void setStatus(final boolean status) {
 		this.statusProperty().set(status);
 	}
+
+	public final StringProperty statusStrProperty() {
+		return this.statusStr;
+	}
 	
+
+	public final String getStatusStr() {
+		return this.statusStrProperty().get();
+	}
+	
+
+	public final void setStatusStr(final String statusStr) {
+		this.statusStrProperty().set(statusStr);
+	}
+	
+	public Chamado() {
+		if(!isStatus()) {
+			setStatusStr("Nao resolvido");
+		}else {
+			setStatusStr("Resolvido");
+		}
+	}
+	
+
 }
