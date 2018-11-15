@@ -1,5 +1,8 @@
 package model;
 
+import java.io.FileReader;
+import java.util.Properties;
+
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -9,32 +12,17 @@ import javafx.beans.property.StringProperty;
 
 public class Chamado {
 
-	private Usuario destinatario;
-	private Usuario remetente;
-	
+	private IntegerProperty remetente = new SimpleIntegerProperty(0);
+	private StringProperty destinatario = new SimpleStringProperty("");
 	private StringProperty descricao = new SimpleStringProperty("");
 	private StringProperty urgencia = new SimpleStringProperty("");
 	private StringProperty dataCriacao = new SimpleStringProperty("");
 	private IntegerProperty id = new SimpleIntegerProperty(0);
 	private BooleanProperty status = new SimpleBooleanProperty(false);
 	private StringProperty statusStr = new SimpleStringProperty("");
+	private StringProperty remetenteNome = new SimpleStringProperty("");
 	
 	
-	public Usuario getDestinatario() {
-		return destinatario;
-	}
-
-	public void setDestinatario(Object destinatario) {
-		this.destinatario = (Usuario) destinatario;
-	}
-
-	public Usuario getRemetente() {
-		return remetente;
-	}
-
-	public void setRemetente(Object remetente) {
-		this.remetente = (Usuario) remetente;
-	}
 
 	public final StringProperty descricaoProperty() {
 		return this.descricao;
@@ -118,7 +106,57 @@ public class Chamado {
 		}else {
 			setStatusStr("Resolvido");
 		}
+		
+		setRemetenteNome(ChamadoModel.buscarNomePorId());
 	}
+	
+	public final StringProperty destinatarioProperty() {
+		return this.destinatario;
+	}
+	
+
+	public final String getDestinatario() {
+		return this.destinatarioProperty().get();
+	}
+	
+
+	public final void setDestinatario(final String destinatario) {
+		this.destinatarioProperty().set(destinatario);
+	}
+
+	public final IntegerProperty remetenteProperty() {
+		return this.remetente;
+	}
+	
+
+	public final int getRemetente() {
+		return this.remetenteProperty().get();
+	}
+	
+
+	public final void setRemetente(final int remetente) {
+		this.remetenteProperty().set(remetente);
+	}
+
+	public final StringProperty remetenteNomeProperty() {
+		return this.remetenteNome;
+	}
+	
+
+	public final String getRemetenteNome() {
+		return this.remetenteNomeProperty().get();
+	}
+	
+
+	public final void setRemetenteNome(final String remetenteNome) {
+		this.remetenteNomeProperty().set(remetenteNome);
+	}
+	
+	
+	
+
+
+	
 	
 
 }

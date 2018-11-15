@@ -86,10 +86,10 @@
                                              <children>
                                                 <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                                                   <columns>
-                                                    <TableColumn prefWidth="75.0" text="Remetente" />
-                                                    <TableColumn prefWidth="229.0" text="Descrição" />
-                                                      <TableColumn prefWidth="106.0" text="Urgência" />
-                                                      <TableColumn minWidth="0.0" prefWidth="85.0" text="Efetuado em" />
+                                                    <TableColumn fx:id="colReRemetente" prefWidth="75.0" text="Remetente" />
+                                                    <TableColumn fx:id="colReDescricao" prefWidth="229.0" text="Descrição" />
+                                                      <TableColumn fx:id="colReUrgencia" prefWidth="106.0" text="Urgência" />
+                                                      <TableColumn fx:id="colReEfetuado" minWidth="0.0" prefWidth="85.0" text="Efetuado em" />
                                                   </columns>
                                                    <GridPane.margin>
                                                       <Insets bottom="5.0" top="5.0" />

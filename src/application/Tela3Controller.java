@@ -1,6 +1,7 @@
 package application;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +42,9 @@ public class Tela3Controller {
 			Chamado c = new Chamado();
 			
 			try {
-				c.setDestinatario(cbDestinatario.getSelectionModel().getSelectedItem());
+				c.setDestinatario(cbDestinatario.getSelectionModel().getSelectedItem().toString());
+				int id = cbDestinatario.getSelectionModel().getSelectedItem().getId();
+				escreveProperties(id+"");
 				if(cbDestinatario.getSelectionModel().isEmpty()) {
 					throw new Exception("Campo não pode ser vazio");
 				}
@@ -65,7 +68,7 @@ public class Tela3Controller {
 							try {
 								Usuario u = new Usuario();
 								u = selecionarRemetente();
-								c.setRemetente(u);
+								c.setRemetente(u.getId());
 								chamados.add(c);
 								ChamadoModel.inserirChamado(chamados);
 								
@@ -100,6 +103,19 @@ public class Tela3Controller {
 			mostrarMensagem("Erro não identificado... "+e.getMessage(), AlertType.WARNING);
 			e.printStackTrace();
 			//raiz
+		}
+	}
+	
+	public void escreveProperties(String id) {
+		Properties properties = new Properties();
+		properties.setProperty("Id", id);
+		
+		try {
+			FileWriter fw = new FileWriter("id.properties");
+			properties.store(fw, "Arquivo de Id do remetente");
+			properties.clone();
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
