@@ -10,7 +10,7 @@ import javafx.beans.property.StringProperty;
 public class Chamado {
 
 	private IntegerProperty remetente = new SimpleIntegerProperty(0);
-	private StringProperty destinatario = new SimpleStringProperty("");
+	private IntegerProperty destinatario = new SimpleIntegerProperty(0);
 	private StringProperty descricao = new SimpleStringProperty("");
 	private StringProperty urgencia = new SimpleStringProperty("");
 	private StringProperty dataCriacao = new SimpleStringProperty("");
@@ -18,7 +18,7 @@ public class Chamado {
 	private BooleanProperty status = new SimpleBooleanProperty(false);
 	private StringProperty statusStr = new SimpleStringProperty("");
 	private StringProperty remetenteNome = new SimpleStringProperty("");
-	private StringProperty destinatarioNome
+	private StringProperty destinatarioNome = new SimpleStringProperty("");
 	
 	
 
@@ -107,20 +107,6 @@ public class Chamado {
 		
 		//setRemetenteNome(ChamadoModel.buscarNomePorId());
 	}
-	
-	public final StringProperty destinatarioProperty() {
-		return this.destinatario;
-	}
-	
-
-	public final String getDestinatario() {
-		return this.destinatarioProperty().get();
-	}
-	
-
-	public final void setDestinatario(final String destinatario) {
-		this.destinatarioProperty().set(destinatario);
-	}
 
 	public final IntegerProperty remetenteProperty() {
 		return this.remetente;
@@ -149,6 +135,36 @@ public class Chamado {
 	public final void setRemetenteNome(final String remetenteNome) {
 		this.remetenteNomeProperty().set(remetenteNome);
 	}
+
+	public final IntegerProperty destinatarioProperty() {
+		return this.destinatario;
+	}
+	
+
+	public final int getDestinatario() {
+		return this.destinatarioProperty().get();
+	}
+	
+
+	public final void setDestinatario(final int destinatario) {
+		this.destinatarioProperty().set(destinatario);
+	}
+	
+
+	public final StringProperty destinatarioNomeProperty() {
+		return this.destinatarioNome;
+	}
+	
+
+	public final String getDestinatarioNome() {
+		return this.destinatarioNomeProperty().get();
+	}
+	
+
+	public final void setDestinatarioNome(final String destinatarioNome) {
+		this.destinatarioNomeProperty().set(destinatarioNome);
+	}
+	
 	
 	
 	

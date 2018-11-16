@@ -49,7 +49,7 @@ public class Tela2Controller {
 	}
 	
 	public void inicializarTabelaEfetuados() {
-		colEfDestinatario.setCellValueFactory(cellData -> cellData.getValue().destinatarioProperty());
+		colEfDestinatario.setCellValueFactory(cellData -> cellData.getValue().destinatarioNomeProperty());
 		colEfDescricao.setCellValueFactory(cellData -> cellData.getValue().descricaoProperty());
 		colEfUrgencia.setCellValueFactory(cellData -> cellData.getValue().urgenciaProperty());
 		colEfEfetuado.setCellValueFactory(cellData -> cellData.getValue().dataCriacaoProperty());
@@ -78,13 +78,12 @@ public class Tela2Controller {
 				Chamado c = new Chamado();
 				c.setDataCriacao(rs.getString("dataCriacao")+"");
 				c.setDescricao(rs.getString("descricao"));
-				c.setDestinatario(rs.getString("destinatario"));
+				c.setDestinatario(rs.getInt("destinatario"));
 				c.setId(rs.getInt("id"));
 				c.setRemetente(rs.getInt("remetente"));
 				c.setStatus(rs.getBoolean("status"));
 				c.setUrgencia(rs.getString("urgencia"));
 				c.setRemetenteNome(ChamadoModel.buscarNomePorId(c.getRemetente()));
-				System.out.println("Nome top "+c.getRemetenteNome());
 				chamadosRecebidos.add(c);
 			}
 			for (Chamado c : chamadosRecebidos) {
@@ -111,12 +110,12 @@ public class Tela2Controller {
 				Chamado c = new Chamado();
 				c.setDataCriacao(rs.getString("dataCriacao")+"");
 				c.setDescricao(rs.getString("descricao"));
-				c.setDestinatario(rs.getString("destinatario"));
+				c.setDestinatario(rs.getInt("destinatario"));
 				c.setId(rs.getInt("id"));
 				c.setRemetente(rs.getInt("remetente"));
 				c.setStatus(rs.getBoolean("status"));
 				c.setUrgencia(rs.getString("urgencia"));
-				//System.out.println(rs.getString("urgencia"));
+				c.setDestinatarioNome(ChamadoModel.buscarNomePorId(c.getDestinatario()));
 				chamadosEfetuados.add(c);
 			}
 			for (Chamado c : chamadosEfetuados) {

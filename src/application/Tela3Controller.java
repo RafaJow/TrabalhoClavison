@@ -42,7 +42,7 @@ public class Tela3Controller {
 			Chamado c = new Chamado();
 			
 			try {
-				c.setDestinatario(cbDestinatario.getSelectionModel().getSelectedItem().toString());
+				c.setDestinatario(cbDestinatario.getSelectionModel().getSelectedItem().getId());
 				int id = cbDestinatario.getSelectionModel().getSelectedItem().getId();
 				escreveProperties(id+"");
 				if(cbDestinatario.getSelectionModel().isEmpty()) {
