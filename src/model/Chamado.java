@@ -1,8 +1,5 @@
 package model;
 
-import java.io.FileReader;
-import java.util.Properties;
-
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -21,6 +18,7 @@ public class Chamado {
 	private BooleanProperty status = new SimpleBooleanProperty(false);
 	private StringProperty statusStr = new SimpleStringProperty("");
 	private StringProperty remetenteNome = new SimpleStringProperty("");
+	private StringProperty destinatarioNome
 	
 	
 
@@ -107,7 +105,7 @@ public class Chamado {
 			setStatusStr("Resolvido");
 		}
 		
-		setRemetenteNome(ChamadoModel.buscarNomePorId());
+		//setRemetenteNome(ChamadoModel.buscarNomePorId());
 	}
 	
 	public final StringProperty destinatarioProperty() {

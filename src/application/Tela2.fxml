@@ -84,7 +84,7 @@
                                               <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                                                <TableView fx:id="tblRecebidos" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                                                   <columns>
                                                     <TableColumn fx:id="colReRemetente" prefWidth="75.0" text="Remetente" />
                                                     <TableColumn fx:id="colReDescricao" prefWidth="229.0" text="Descrição" />

@@ -36,18 +36,18 @@ public class ChamadoModel {
 		}
 	}
 	
-	public static String buscarNomePorId() {
+	public static String buscarNomePorId(int id) {
 		String nome="";
 		try {
 			Connection conn = Conexao.getConexao();
 		
 			String sql = "select * from usuario where id = (?) ";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			int id = Integer.parseInt(lerArquivoId());
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				nome = rs.getString("nome");
+				System.out.println("nome "+nome);
 				conn.close();
 				return nome;
 			}

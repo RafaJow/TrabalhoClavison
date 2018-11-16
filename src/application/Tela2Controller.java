@@ -12,6 +12,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.Chamado;
+import model.ChamadoModel;
 import util.Conexao;
 
 public class Tela2Controller {
@@ -43,6 +44,8 @@ public class Tela2Controller {
 		lerArquivo();
 		inicializarTabelaEfetuados();
 		listarChamadosEfetuados();
+		inicializarTabelaRecebidos();
+		listarChamadosRecebidos();
 	}
 	
 	public void inicializarTabelaEfetuados() {
@@ -66,7 +69,29 @@ public class Tela2Controller {
 		chamadosRecebidos.clear();
 		try {
 			Connection conn = Conexao.getConexao();
-			String sql = "select * from chamado where destinatario";
+			String sql = "select * from chamado where destinatario = (?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			int id = buscarIdDoUsuarioLogado();
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Chamado c = new Chamado();
+				c.setDataCriacao(rs.getString("dataCriacao")+"");
+				c.setDescricao(rs.getString("descricao"));
+				c.setDestinatario(rs.getString("destinatario"));
+				c.setId(rs.getInt("id"));
+				c.setRemetente(rs.getInt("remetente"));
+				c.setStatus(rs.getBoolean("status"));
+				c.setUrgencia(rs.getString("urgencia"));
+				c.setRemetenteNome(ChamadoModel.buscarNomePorId(c.getRemetente()));
+				System.out.println("Nome top "+c.getRemetenteNome());
+				chamadosRecebidos.add(c);
+			}
+			for (Chamado c : chamadosRecebidos) {
+				tblRecebidos.getItems().add(c);
+			}
+			System.out.println("ID recebidos "+id);
+			conn.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -91,7 +116,7 @@ public class Tela2Controller {
 				c.setRemetente(rs.getInt("remetente"));
 				c.setStatus(rs.getBoolean("status"));
 				c.setUrgencia(rs.getString("urgencia"));
-				System.out.println(rs.getString("urgencia"));
+				//System.out.println(rs.getString("urgencia"));
 				chamadosEfetuados.add(c);
 			}
 			for (Chamado c : chamadosEfetuados) {
@@ -126,7 +151,7 @@ public class Tela2Controller {
 			while(rs.next()) {
 				id = rs.getInt("id");
 				conn.close();
-				System.out.println("ID "+id);
+			//	System.out.println("ID "+id);
 				return id;
 			}
 			
