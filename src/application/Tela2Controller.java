@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -89,7 +88,6 @@ public class Tela2Controller {
 				chamadosRecebidos.add(c);
 			}
 			conn.close();
-			//ArrayList<Chamado> chamadosNovo = new ArrayList<Chamado>();
 			for (Chamado c : chamadosRecebidos) {
 				if(cAux.getId() == (c.getId())) {
 					System.out.println("nope");
@@ -137,6 +135,7 @@ public class Tela2Controller {
 				c.setUrgencia(rs.getString("urgencia"));
 				c.setRemetenteNome(ChamadoModel.buscarNomePorId(c.getRemetente()));
 				
+				
 				if(!c.isStatus()) {
 					chamadosRecebidos.add(c);
 				}else {
@@ -148,7 +147,7 @@ public class Tela2Controller {
 			for (Chamado c : chamadosRecebidos) {
 				tblRecebidos.getItems().add(c);
 			}
-			System.out.println("ID recebidos "+id);
+			
 			conn.close();
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -213,7 +212,6 @@ public class Tela2Controller {
 			while(rs.next()) {
 				id = rs.getInt("id");
 				conn.close();
-			//	System.out.println("ID "+id);
 				return id;
 			}
 			
