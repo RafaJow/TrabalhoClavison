@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -72,6 +73,12 @@ public class Tela3Controller {
 								chamados.add(c);
 								ChamadoModel.inserirChamado(chamados);
 								
+								/*
+								FXMLLoader loader = new FXMLLoader(getClass().getResource("Tela2.fxml"));
+								loader.load();
+								Tela2Controller t = loader.getController();
+								t.teste();
+								*/
 								mostrarMensagem("Chamado efetuado com sucesso", AlertType.CONFIRMATION);
 								
 							}catch (Exception e) {

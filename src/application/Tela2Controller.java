@@ -190,6 +190,12 @@ public class Tela2Controller {
 		}
 	}
 	
+	/*
+	public void teste() {
+		System.out.println("TESTE");
+		tblEfetuados.getItems().clear();
+	}
+	*/
 	public void lerArquivo() {
 		Properties prop = new Properties();
 		try (FileReader fr = new FileReader("conf.properties")) {
