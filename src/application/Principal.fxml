@@ -20,7 +20,7 @@
          <left>
             <VBox prefHeight="250.0" prefWidth="110.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#abreTela2" style="-fx-background-color: #87CEFA;" text="Sua Pagina">
+                  <Button minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#abreTela2" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="Sua Pagina">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
@@ -31,7 +31,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#abreTela3" style="-fx-background-color: #87CEFA;" text="Chamado">
+                  <Button minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#abreTela3" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="Chamado">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
@@ -55,7 +55,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Button mnemonicParsing="false" onAction="#deslogar" prefWidth="100.0" style="-fx-background-color: #87CEFA;" text="Logout">
+                  <Button mnemonicParsing="false" onAction="#deslogar" prefWidth="100.0" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="Logout">
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" top="10.0" />
                      </VBox.margin>

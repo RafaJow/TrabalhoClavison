@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
@@ -64,8 +65,9 @@ public class Tela2Controller {
 		colReEfetuado.setCellValueFactory(cellData -> cellData.getValue().dataCriacaoProperty());
 	}
 	
-	@FXML
-	public void listarChamadosRecebidos() {
+	public void resolver() {
+		Chamado cAux = new Chamado();
+		cAux = tblRecebidos.getSelectionModel().getSelectedItem();
 		chamadosRecebidos.clear();
 		try {
 			Connection conn = Conexao.getConexao();
@@ -86,6 +88,63 @@ public class Tela2Controller {
 				c.setRemetenteNome(ChamadoModel.buscarNomePorId(c.getRemetente()));
 				chamadosRecebidos.add(c);
 			}
+			conn.close();
+			//ArrayList<Chamado> chamadosNovo = new ArrayList<Chamado>();
+			for (Chamado c : chamadosRecebidos) {
+				if(cAux.getId() == (c.getId())) {
+					System.out.println("nope");
+					
+					try {
+						conn = Conexao.getConexao();
+						sql = "UPDATE chamado SET status = '1' WHERE id=(?)";
+						ps = conn.prepareStatement(sql);
+						id = c.getId();
+						ps.setInt(1, id);
+						ps.executeUpdate();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}else {
+					System.out.println("nopq1");
+				}
+			}
+			listarChamadosRecebidos();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void listarChamadosRecebidos() {
+		chamadosRecebidos.clear();
+		try {
+			Connection conn = Conexao.getConexao();
+			String sql = "select * from chamado where destinatario = (?)";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			int id = buscarIdDoUsuarioLogado();
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Chamado c = new Chamado();
+				c.setDataCriacao(rs.getString("dataCriacao")+"");
+				c.setDescricao(rs.getString("descricao"));
+				c.setDestinatario(rs.getInt("destinatario"));
+				c.setId(rs.getInt("id"));
+				c.setRemetente(rs.getInt("remetente"));
+				c.setStatus(rs.getBoolean("status"));
+				c.setUrgencia(rs.getString("urgencia"));
+				c.setRemetenteNome(ChamadoModel.buscarNomePorId(c.getRemetente()));
+				
+				if(!c.isStatus()) {
+					chamadosRecebidos.add(c);
+				}else {
+					c.setStatusStr("Resolvido");
+				}
+				
+			}
+			tblRecebidos.getItems().clear();
 			for (Chamado c : chamadosRecebidos) {
 				tblRecebidos.getItems().add(c);
 			}
@@ -116,6 +175,10 @@ public class Tela2Controller {
 				c.setStatus(rs.getBoolean("status"));
 				c.setUrgencia(rs.getString("urgencia"));
 				c.setDestinatarioNome(ChamadoModel.buscarNomePorId(c.getDestinatario()));
+				
+				if(c.isStatus()) {
+					c.setStatusStr("Resolvido");
+				}
 				chamadosEfetuados.add(c);
 			}
 			for (Chamado c : chamadosEfetuados) {
