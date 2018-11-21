@@ -47,7 +47,6 @@ public class ChamadoModel {
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				nome = rs.getString("nome");
-				System.out.println("nome "+nome);
 				conn.close();
 				return nome;
 			}

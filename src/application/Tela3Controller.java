@@ -136,7 +136,6 @@ public class Tela3Controller {
 				u.setCargo(rs.getString("cargo"));
 				u.setLogin(rs.getString("login"));
 				
-				//System.out.println(u.toString());
 			}
 			
 			conn.close();
@@ -152,7 +151,7 @@ public class Tela3Controller {
 		try (FileReader fr = new FileReader("conf.properties")) {
 			prop.load(fr);
 			usuarioLogado = prop.getProperty("Usuario");
-		//	System.out.println("Usuario logado: "+usuarioLogado);
+		
 		}catch (Exception e) {
 			mostrarMensagem("Erro não identificado... "+e.getMessage(), AlertType.WARNING);
 			e.printStackTrace();
@@ -176,7 +175,7 @@ public class Tela3Controller {
 				u.setCargo(rs.getString("cargo"));
 				u.setLogin(rs.getString("login"));
 				cbDestinatario.getItems().add(u);
-				//System.out.println(u.toString());
+				
 			}
 			
 			conn.close();

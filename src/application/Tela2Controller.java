@@ -19,7 +19,7 @@ public class Tela2Controller {
 	
 	@FXML TabPane tabAberto;
 	
-	@FXML TableView<Chamado> tblEfetuados;
+	@FXML  TableView<Chamado> tblEfetuados;
 	
 	@FXML TableColumn<Chamado, String> colEfDestinatario;
 	@FXML TableColumn<Chamado, String> colEfDescricao;
@@ -35,10 +35,10 @@ public class Tela2Controller {
 	@FXML TableColumn<Chamado, String> colReUrgencia;
 	@FXML TableColumn<Chamado, String> colReEfetuado;
 	
-	String usuario;
+	 String usuario;
 	
-	private ArrayList<Chamado> chamadosEfetuados = new ArrayList<Chamado>();
-	private ArrayList<Chamado> chamadosRecebidos = new ArrayList<Chamado>();
+	private  ArrayList<Chamado> chamadosEfetuados = new ArrayList<Chamado>();
+	private  ArrayList<Chamado> chamadosRecebidos = new ArrayList<Chamado>();
 	
 	public void initialize() {
 		lerArquivo();
@@ -47,6 +47,7 @@ public class Tela2Controller {
 		inicializarTabelaRecebidos();
 		listarChamadosRecebidos();
 	}
+
 	
 	public void inicializarTabelaEfetuados() {
 		colEfDestinatario.setCellValueFactory(cellData -> cellData.getValue().destinatarioNomeProperty());
@@ -155,7 +156,7 @@ public class Tela2Controller {
 	}
 	
 	@FXML
-	public void listarChamadosEfetuados() {
+	public  void listarChamadosEfetuados() {
 		chamadosEfetuados.clear();
 		try {
 			Connection conn = Conexao.getConexao();
@@ -199,7 +200,7 @@ public class Tela2Controller {
 		}
 	}
 	
-	public int buscarIdDoUsuarioLogado() {
+	public  int buscarIdDoUsuarioLogado() {
 		int id=0;
 		try {
 			Connection conn = Conexao.getConexao();

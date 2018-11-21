@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -14,21 +16,22 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="385.0" prefWidth="435.0" style="-fx-border-color: darkblue;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tela1Controller">
+<AnchorPane prefHeight="486.0" prefWidth="451.0" style="-fx-border-color: darkblue;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Tela1Controller">
    <children>
-      <BorderPane prefHeight="296.0" prefWidth="435.0" style="-fx-background-color: lightblue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <GridPane prefHeight="375.0" prefWidth="387.0" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="296.0" prefWidth="435.0" style="-fx-background-color: #00A0FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <GridPane prefHeight="478.0" prefWidth="439.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="212.0" minHeight="10.0" prefHeight="212.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <TextField fx:id="txtLogin" GridPane.halignment="CENTER" GridPane.rowIndex="2">
@@ -36,12 +39,12 @@
                         <Insets left="75.0" right="75.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Label text="Login" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="Senha" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Label text="Senha" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -51,36 +54,25 @@
                         <Insets left="75.0" right="75.0" />
                      </GridPane.margin>
                   </PasswordField>
-                  <HBox prefHeight="100.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                  <HBox maxHeight="55.0" minHeight="55.0" prefHeight="55.0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="75.0" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="Login">
+                        <Button mnemonicParsing="false" onAction="#login" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="Login">
                            <font>
-                              <Font name="System Bold Italic" size="12.0" />
+                              <Font name="Verdana Bold Italic" size="12.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="75.0" />
+                              <Insets left="75.0" top="10.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#cadastro" prefHeight="50.0" prefWidth="88.0" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="Cadastrar-se">
+                        <Button mnemonicParsing="false" onAction="#sair" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="SAIR" textFill="RED">
                            <font>
-                              <Font name="System Bold Italic" size="12.0" />
+                              <Font name="Verdana Bold Italic" size="12.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="18.0" />
-                           </HBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#sair" prefHeight="50.0" prefWidth="75.0" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="SAIR" textFill="RED">
-                           <font>
-                              <Font name="System Bold Italic" size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="19.0" />
+                              <Insets left="15.0" top="10.0" />
                            </HBox.margin>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -88,9 +80,28 @@
                         </Button>
                      </children>
                      <GridPane.margin>
-                        <Insets top="50.0" />
+                        <Insets />
                      </GridPane.margin>
                   </HBox>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+                     <image>
+                        <Image url="@../img/i8.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onAction="#cadastro" prefHeight="50.0" prefWidth="285.0" style="-fx-background-color: #87CEFA; -fx-background-radius: 15;" text="CADASTRAR-SE" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Verdana Bold Italic" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Button>
                </children>
                <BorderPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -99,7 +110,7 @@
                   <Insets />
                </opaqueInsets>
             </GridPane>
-         </center>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>
