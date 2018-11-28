@@ -91,7 +91,7 @@ public class Tela2Controller {
 			conn.close();
 			for (Chamado c : chamadosRecebidos) {
 				if(cAux.getId() == (c.getId())) {
-					System.out.println("nope");
+					//System.out.println("nope");
 					
 					try {
 						conn = Conexao.getConexao();
@@ -105,7 +105,7 @@ public class Tela2Controller {
 					}
 					
 				}else {
-					System.out.println("nopq1");
+					//System.out.println("nopq1");
 				}
 			}
 			listarChamadosRecebidos();
@@ -185,6 +185,26 @@ public class Tela2Controller {
 				tblEfetuados.getItems().add(c);
 			}
 			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void limparResolvidos() {
+		
+		chamadosEfetuados.clear();
+		try {
+			Connection conn = Conexao.getConexao();
+			String sql = "DELETE from chamado where remetente = (?) and status = '1'";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			int id = buscarIdDoUsuarioLogado();
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			
+			conn.close();
+			tblEfetuados.getItems().clear();
+			listarChamadosEfetuados();
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
